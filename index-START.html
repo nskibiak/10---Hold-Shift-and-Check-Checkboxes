@@ -112,23 +112,24 @@
       });
 
       const checkboxes = document.querySelectorAll('input');
+      const cboxArray = Array.from(checkboxes)
+      console.log(cboxArray)
 
       checkboxes.forEach((checkbox) => {
         checkbox.addEventListener('click', (event) => {
-          console.log(holdingShift);
-          // if (this.holdingShift === true) {
-          //   console.log('you clicked while holding shift');
-          // } else {
-          //   console.log('you clicked without shift');
-          // }
+          console.log(event.target.checked);
+          if (holdingShift === true) {
+            console.log('you clicked while holding shift');
+            console.log(event.target);
+            const index = [].indexOf.call(checkboxes, event.target);
+            console.log(index);
+            // loop through previous checkboxes
+            // if any are checked, set event.checkbox of others in between to unchecked
+          } else {
+            console.log('you clicked without shift');
+          }
         });
       });
-
-      // function indexCheckedBoxes(checkboxes) {
-      //   checkboxes.map(checkbox => {
-      //     return checkbox.checked;
-      //   })
-      // }
     </script>
   </body>
 </html>
