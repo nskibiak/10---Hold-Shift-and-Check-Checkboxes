@@ -120,9 +120,11 @@
           console.log(event.target.checked);
           if (holdingShift === true) {
             const nodeIndex = [].indexOf.call(checkboxes, event.target);
-            for (let i = 0; i < nodeIndex; i++) {
-              if (checkboxes[i].checked === false) {
-                checkboxes[i].checked = true
+            for (let i = nodeIndex - 1; i > -1; i--) {
+              if (checkboxes[i].checked === true) {
+                return
+              } else {
+                checkboxes[i].checked = true;
               };
             }
             // loop through previous checkboxes
