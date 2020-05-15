@@ -113,23 +113,36 @@
 
       const checkboxes = document.querySelectorAll('input');
 
-      checkboxes.forEach((checkbox) => {
-        checkbox.addEventListener('click', (event) => {
-          if (holdingShift === true) {
-            const nodeIndex = [].indexOf.call(checkboxes, event.target);
-            for (let i = nodeIndex - 1; i > -1; i--) {
-              if (checkboxes[i].checked === true) {
-                return
-              } else {
-                checkboxes[i].checked = true;
-              };
+      // function handleClick(event) {
+      //   const nodeIndex = [].indexOf.call(checkboxes, event.target);
+      //   if (holdingShift === true) {
+      //     for (let i = nodeIndex - 1; i > -1; i--) {
+      //       if (checkboxes[i].checked === true) {
+      //         return
+      //       } else {
+      //         checkboxes[i].checked = true;
+      //       };
+      //     }
+      //   } 
+      // }
+
+      function handleClick(event) {
+        let inBetween = false;
+        if (holdingShift === true) {
+          checkboxes.forEach(checkbox => {
+            if (checkbox.checked || checkbox === this) {
+              inBetween = !inBetween;
             }
-          } 
-          //   else {
-          //   console.log('you clicked without shift');
-          // }
-        });
-      });
+            if (inBetween) {
+              checkbox.checked = true;
+            }
+          })
+        } 
+      }
+
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('click', handleClick)
+      })
     </script>
   </body>
 </html>
