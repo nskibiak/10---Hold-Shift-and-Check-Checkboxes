@@ -100,24 +100,21 @@
       window.addEventListener('keydown', function (event) {
         if (event.key === 'Shift') {
           holdingShift = true;
-          console.log(`holdingShift is ${holdingShift}`);
+          // console.log(`holdingShift is ${holdingShift}`);
         }
       });
 
       window.addEventListener('keyup', function (event) {
         if (event.key === 'Shift') {
           holdingShift = false;
-          console.log(`holdingShift is ${holdingShift}`);
+          // console.log(`holdingShift is ${holdingShift}`);
         }
       });
 
       const checkboxes = document.querySelectorAll('input');
-      const cboxArray = Array.from(checkboxes);
-      console.log(cboxArray);
 
       checkboxes.forEach((checkbox) => {
         checkbox.addEventListener('click', (event) => {
-          console.log(event.target.checked);
           if (holdingShift === true) {
             const nodeIndex = [].indexOf.call(checkboxes, event.target);
             for (let i = nodeIndex - 1; i > -1; i--) {
@@ -127,11 +124,10 @@
                 checkboxes[i].checked = true;
               };
             }
-            // loop through previous checkboxes
-            // if any are checked, set event.checkbox of others in between to unchecked
-          } else {
-            console.log('you clicked without shift');
-          }
+          } 
+          //   else {
+          //   console.log('you clicked without shift');
+          // }
         });
       });
     </script>
