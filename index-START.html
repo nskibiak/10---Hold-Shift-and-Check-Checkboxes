@@ -95,16 +95,40 @@
     </div>
 
     <script>
+      let holdingShift = false;
+
+      window.addEventListener('keydown', function (event) {
+        if (event.key === 'Shift') {
+          holdingShift = true;
+          console.log(`holdingShift is ${holdingShift}`);
+        }
+      });
+
+      window.addEventListener('keyup', function (event) {
+        if (event.key === 'Shift') {
+          holdingShift = false;
+          console.log(`holdingShift is ${holdingShift}`);
+        }
+      });
+
       const checkboxes = document.querySelectorAll('input');
+
       checkboxes.forEach((checkbox) => {
         checkbox.addEventListener('click', (event) => {
-          console.log(event.target.checked);
+          console.log(holdingShift);
+          // if (this.holdingShift === true) {
+          //   console.log('you clicked while holding shift');
+          // } else {
+          //   console.log('you clicked without shift');
+          // }
         });
       });
 
-      document.addEventListener('keydown', function (event) {
-        console.log(event.which);
-      });
+      // function indexCheckedBoxes(checkboxes) {
+      //   checkboxes.map(checkbox => {
+      //     return checkbox.checked;
+      //   })
+      // }
     </script>
   </body>
 </html>
